@@ -7,40 +7,55 @@ import com.example.umc_study052.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
-    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater)}
 
-    private val todos = listOf(
-        Todo("RecyclerView Item #1", false),
-        Todo("RecyclerView Item #2", false),
-        Todo("RecyclerView Item #3", false),
-        Todo("RecyclerView Item #4", false),
-        Todo("RecyclerView Item #5", false),
-        Todo("RecyclerView Item #6", false),
-        Todo("RecyclerView Item #7", false),
-        Todo("RecyclerView Item #8", false),
-        Todo("RecyclerView Item #9", false),
-        Todo("RecyclerView Item #10", false),
-        Todo("RecyclerView Item #11", false),
-        Todo("RecyclerView Item #12", false),
-        Todo("RecyclerView Item #13", false),
-        Todo("RecyclerView Item #14", false),
-        Todo("RecyclerView Item #15", false),
-        Todo("RecyclerView Item #16", false),
-        Todo("RecyclerView Item #17", false),
-        Todo("RecyclerView Item #18", false),
-        Todo("RecyclerView Item #19", false),
-        Todo("RecyclerView Item #20", false)
-    )
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: TodoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        initViews()
+        val itemList = generateItemList() // 아이템 리스트를 생성
+
+        adapter = TodoAdapter(itemList)
+        binding.todoList.adapter = adapter
+        binding.todoList.layoutManager = LinearLayoutManager(this)
+
+        adapter.notifyDataSetChanged() // 데이터 변경 시 어댑터에 알리기
+
     }
 
-    private fun initViews() {
-        binding.todoList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.todoList.adapter = TodoAdapter(todos)
+    private fun generateItemList(): List<Todo> {
+        return listOf(
+            Todo("Item 1", false),
+            Todo("Item 2", true),
+            Todo("Item 3", false),
+            Todo("Item 4", false),
+            Todo("Item 5", false),
+            Todo("Item 6", false),
+            Todo("Item 7", false),
+            Todo("Item 8", false),
+            Todo("Item 9", false),
+            Todo("Item 10", false),
+            Todo("Item 11", false),
+            Todo("Item 12", false),
+            Todo("Item 13", false),
+            Todo("Item 14", false),
+            Todo("Item 1", false),
+            Todo("Item 2", true),
+            Todo("Item 3", false),
+            Todo("Item 4", false),
+            Todo("Item 5", false),
+            Todo("Item 6", false),
+            Todo("Item 7", false),
+            Todo("Item 8", false),
+            Todo("Item 9", false),
+            Todo("Item 10", false),
+            Todo("Item 11", false),
+            Todo("Item 12", false),
+            Todo("Item 13", false),
+            Todo("Item 14", false),
+            )
     }
 }
