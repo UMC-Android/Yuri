@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //login 먼저 실행
         val loginIntent = Intent(this, LoginActivity::class.java)
         loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(loginIntent)
