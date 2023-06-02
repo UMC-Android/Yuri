@@ -1,13 +1,17 @@
 package com.example.umc_study09
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.umc_study09.login.LoginActivity
 import com.example.umc_study09.retrofit.Result
 import com.example.umc_study09.retrofit.RetrofitClient
 import com.example.umc_study09.retrofit.RetrofitInterface
+import com.kakao.sdk.common.util.Utility
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +29,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val loginIntent = Intent(this, LoginActivity::class.java)
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(loginIntent)
+        finish()
+
+        //KakaoSdk받기
+        Log.d(TAG, "keyhash : ${Utility.getKeyHash(this)}")
 
         recyclerView = findViewById(R.id.recyclerView)
         val layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)

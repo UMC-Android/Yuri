@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UMC_study09</string>
+    <string name="login">Login 정보</string>
+    <string name="tv_nickname">tv_NickName</string>
+    <string name="tv_age">tv_Age</string>
+    <string name="tv_email">tv_Email</string>
 </resources>
